@@ -1,0 +1,21 @@
+{
+    "APPNAME": "ClearSky",
+    "APPURL": "http://localhost/ClearSky/Exposure/",
+    "ROOTURL": "http://localhost/ClearSky/",
+    "SessionLimit": "12",
+    "IsDebug": true,
+    "TimeZone": "Asia/Tokyo",
+    "SessionDumper": "File",
+    "ApplicationTestMode": false,
+    "ApplicationDevelop": false,
+    "RedisHost": "127.0.0.1",
+    "RedisPort": "6379",
+    "RedisPass": "",
+    "DBEngine": "mysql",
+    "DBName": "ClearSky",
+    "DBHost": "localhost",
+    "DBPort": "3306",
+    "DBUser": "root",
+    "DBPass": "root",
+    "DBChr": "utf8mb4"
+}

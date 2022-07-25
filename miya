@@ -1,0 +1,117 @@
+<?php
+require "vendor/autoload.php";
+
+use Clsk\Elena\Tools\UUIDFactory;
+use Clsk\Elena\Databases\Migrator;
+use Clsk\Elena\Tools\FileReader;
+
+if(isset($argv[1])){
+    $command = explode(":", $argv[1]);
+    if(count($command) == 2){
+        if(strtolower($command[0]) == "controller"){
+            $controller_template = file_get_contents("Core/DefaultValue/defaultcontroller.txt");
+            $command[1] = str_replace(";", "", str_replace(".", "", $command[1]));
+            $controller_build = str_replace("{{CONTROLLER_NAME}}", $command[1], $controller_template);
+            if(!file_exists("Web/Programs/Controllers/".$command[1].".php")){
+                file_put_contents("Web/Programs/Controllers/".$command[1].".php", $controller_build);
+                echo "Controller was created to Web/Programs/Controllers/".$command[1].".php";
+            }else{
+                $str = "Err!:it controller is already created!";
+                echo "\033[41m$str\033[0m";
+            }
+        }else if(strtolower($command[0]) == "model"){
+            $model_template = file_get_contents("Core/DefaultValue/defaultmodel.txt");
+            $command[1] = str_replace(";", "", str_replace(".", "", $command[1]));
+            $model_build = str_replace("{{MODEL_NAME}}", $command[1], $model_template);
+            if(!file_exists("Web/Programs/Models/".$command[1].".php")){
+                file_put_contents("Web/Programs/Models/".$command[1].".php", $model_build);
+                echo "Model was created to Web/Programs/Models/".$command[1].".php";
+            }else{
+                $str = "Err!:It model is already created!";
+                echo "\033[41m$str\033[0m";
+            }
+        }else if(strtolower($command[0]) == "migration"){
+            if(strtolower($command[1]) == "create"){
+                $model_template = file_get_contents("Core/DefaultValue/MigrationTemplate.txt");
+                $command[1] = str_replace(";", "", str_replace(".", "", $command[1]));
+                if(array_key_exists(2, $argv)){
+                    $classname = str_replace(";", "", str_replace(".", "", $argv[2]));
+                }else{
+                    echo "Migrate Name is not setting...";
+                    exit;
+                }
+                $migration_build = str_replace("{{Migration_Name}}", $classname, $model_template);
+                if(!file_exists("Web/Programs/Models/".$classname.".php")){
+                    file_put_contents("Web/Migrates/".$classname.".php", $migration_build);
+                    echo "Migration was created to Web/Migrates/".$classname.".php";
+                }else{
+                    $str = "Err!:It migration is already created!";
+                    echo "\033[41m$str\033[0m";
+                }
+            }if(strtolower($command[1]) == "start"){
+                Migrator::Migration();
+                echo "Migration was ended.";
+            }
+            if(strtolower($command[1]) == "rollback"){
+                Migrator::RollBack();
+                echo "Rollback was ended.";
+            }
+        }else if(strtolower($command[0]) == "server"){
+            if(strtolower($command[1]) == "start"){
+                if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+                    echo "\n StartUp ClearSky Server Listen->Port:80 DocumentRoot:Exposure/ \n";
+                    exec("php -S localhost:80 -t Exposure/");
+                } else if(PHP_OS == "Linux" or PHP_OS == "NetBSD" or PHP_OS == "OpenBSD" or PHP_OS == "FreeBSD" or PHP_OS == "Darwin") {
+                    echo "\n StartUp ClearSky Server Listen->Port:80 DocumentRoot:Exposure/ \n";
+                    exec("sudo php -S localhost:80 -t Exposure/");
+                }
+            }
+        }else if(strtolower($command[0]) == "extension"){
+            if(array_key_exists(1, $command)){
+                $user_arg = escapeshellarg($command[1]);
+                exec("composer install ".trim($user_arg));
+            }else{
+                echo "package name not selected.";
+            }
+        }else if(strtolower($command[0]) == "exmigration"){
+            if(array_key_exists(1, $command)){
+                Migrator::Migration(true, $command[1]);
+                echo "Migration was ended.";
+            }else{
+                echo "DirNotFound...";
+            }
+        }else if(strtolower($command[0]) == "exrollback"){
+            if(array_key_exists(1, $command)){
+                Migrator::Migration(true, $command[1]);
+                echo "Rollback was ended.";
+            }
+        }else if(strtolower($command[0]) == "systemdb"){
+            if(array_key_exists(1, $command)){
+                if($command[1] == "migration"){
+                    Migrator::SystemMigration();
+                    echo "System database create complated.";
+                }elseif($command[1] == "rollback"){
+                    echo "System database rollback complated.";
+                }else{
+                    echo "Command not found...";
+                }
+            }
+        }else{
+            if(file_exists(dirname(__FILE__)."/Core/SystemTemplate/CLITemplate/CommandHelp")){
+                echo file_get_contents(dirname(__FILE__)."/Core/SystemTemplate/CLITemplate/CommandHelp");
+            }
+        }
+    }else{
+        if(file_exists(dirname(__FILE__)."/Core/SystemTemplate/CLITemplate/CommandHelp")){
+            echo file_get_contents(dirname(__FILE__)."/Core/SystemTemplate/CLITemplate/CommandHelp");
+        }
+    }
+}else{
+    if(file_exists(dirname(__FILE__)."/Core/SystemTemplate/CLITemplate/CommandHelp")){
+        if(rand(100,rand(200,9999)) == 321){
+            echo file_get_contents(dirname(__FILE__)."/Core/SystemTemplate/CLITemplate/Ahoxa");
+        }else{
+            echo file_get_contents(dirname(__FILE__)."/Core/SystemTemplate/CLITemplate/CommandHelp");
+        }
+    }
+}

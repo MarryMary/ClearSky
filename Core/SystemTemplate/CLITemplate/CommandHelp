@@ -1,0 +1,37 @@
+                                                                                            ■
+■■     ■■■  ■                      ■■■■■                                                    ■
+■■■    ■■■                        ■■   ■                                                    ■
+■■■    ■■■  ■  ■■   ■  ■■■       ■■        ■■■■   ■■■■  ■■   ■■■■  ■■    ■■■   ■ ■■■    ■■■■■
+■ ■   ■■■■  ■   ■   ■ ■   ■      ■        ■■  ■■  ■■  ■■  ■  ■■  ■■  ■  ■   ■  ■■  ■■  ■■  ■■
+■  ■  ■ ■■  ■   ■  ■      ■      ■        ■    ■  ■   ■   ■  ■   ■   ■      ■  ■    ■  ■    ■
+■  ■  ■ ■■  ■    ■ ■  ■■■■■      ■        ■    ■  ■   ■   ■  ■   ■   ■  ■■■■■  ■    ■  ■    ■
+■  ■■■  ■■  ■    ■■■  ■   ■      ■■       ■    ■  ■   ■   ■  ■   ■   ■  ■   ■  ■    ■  ■    ■
+■   ■■  ■■  ■    ■■   ■  ■■       ■■   ■  ■■  ■■  ■   ■   ■  ■   ■   ■  ■  ■■  ■    ■  ■■  ■■
+■   ■   ■■  ■     ■   ■■■■■        ■■■■    ■■■■   ■   ■   ■  ■   ■   ■  ■■■■■  ■    ■   ■■■ ■
+                 ■                                                                           
+                ■■                                                                           
+
+Miya command version 0.1.0
+
+Command Format - <Type>:<Operation>
+
+
+Command usage:
+
+controller:<controller_name> - Create controller to Web/Programs/Controllers/<controller_name>.php
+
+model:<model_name> - Create model to Web/Programs/Controllers/<model_name>.php
+    It is recommended that the model name be the same as the database table name.
+    If you make the model name and the table name the same, the framework will automatically track the table associated with the model name.
+
+migration:create <migration_name> - Create migration base file to /Web/Migrates/<migration_name>.php
+
+migration:start - Start migration.
+
+migration:rollback - Rollback the migration.
+
+server:start - Framework is start PHP Built-in Server
+
+extension:<extension-name> - Framework is installing composer package made for Cinderella-Magic Framework.
+
+If you want to more help or read document? please access to -> https://sites.google.com/view/cinderella-magic

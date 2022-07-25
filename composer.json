@@ -1,0 +1,28 @@
+{
+    "name": "mary/clearsky",
+    "description": "The simply PHP framework",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "MarryMary",
+            "email": "92404990+MarryMary@users.noreply.github.com"
+        }
+    ],
+    "require": {
+      "ext-gd": "*",
+        "phpmailer/phpmailer": "^6.6",
+      "ext-mbstring": "*",
+      "ext-ctype": "*",
+        "google/apiclient": "^2.12",
+        "abraham/twitteroauth": "^4.0",
+      "ext-zip": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Clsk\\": "Core/",
+            "Web\\": "Web/",
+            "TemplateFunctions\\": "Web/Programs/TemplateFunctions"
+        }
+    }
+}

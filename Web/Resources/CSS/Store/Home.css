@@ -1,0 +1,5 @@
+.user a:hover{
+    opacity: 0.5;
+    -webkit-transition:	all 0.3s ease;
+    transition:		all 0.3s ease;
+}

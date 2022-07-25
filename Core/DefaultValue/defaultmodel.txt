@@ -1,0 +1,12 @@
+<?php
+namespace Web\Programs\Models;
+/* {{MODEL_NAME}} モデル
+* ここに処理を記述します。
+*
+*/
+use Clsk\Elena\Databases\ModelChaser;
+
+class {{MODEL_NAME}} extends ModelChaser{
+    //もし、テーブル名が{{MODEL_NAME}}ではない場合、以下のようにしてテーブル名を記載してください。
+    //protected $table = "ClearSkySample";
+}

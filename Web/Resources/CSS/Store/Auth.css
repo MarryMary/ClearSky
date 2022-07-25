@@ -1,0 +1,20 @@
+body{
+    background: lightgray;
+}
+.auth-card{
+    width: 25%;
+    background: white;
+    padding: 10px;
+    border-radius: 5%;
+    margin: auto;
+    margin-top: 10%;
+    box-shadow: 0 0 8px gray;
+}
+
+.text-centering{
+    text-align: center;
+}
+
+.auth-card button{
+    width: 90%;
+}

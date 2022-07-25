@@ -1,0 +1,19 @@
+<?php
+namespace Web\Programs\Controllers;
+
+/* {{CONTROLLER_NAME}} コントローラー
+* ここに処理を記述します。
+*
+*/
+use Clsk\Elena\Session\Session;
+use Clsk\Elena\Tools\TimeToTime;
+use Clsk\Elena\Tools\FileReader;
+use Clsk\Elena\Request\RequestReceptor;
+use Clsk\Elena\Executer\Provide;
+
+class {{CONTROLLER_NAME}}{
+    public function Index()
+    {
+        //TODO
+    }
+}

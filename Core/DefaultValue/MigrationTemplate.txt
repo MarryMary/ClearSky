@@ -1,0 +1,17 @@
+<?php
+require dirname(__FILE__)."/../../vendor/autoload.php";
+
+use Clsk\Elena\Databases\Migration;
+
+class {{Migration_Name}} extends Migration{
+    
+    public function Execution()
+    {
+        //TODO
+    }
+
+    public function Rollback()
+    {
+        //TODO
+    }
+}

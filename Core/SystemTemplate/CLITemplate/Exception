@@ -1,0 +1,13 @@
+Miya Exception Traceback
+
+Exception Detail: 
+{{EXCEPTION}}
+
+PHP TraceBack: 
+{{TRACEBACK}}
+
+PHP Solution Hint:
+{{HINT}}
+
+PHP SourceCode:
+{{SOURCECODE}}
